@@ -1,14 +1,15 @@
 *
 {margin: 0;
 padding: 0;
-box-sizing: border-box;}
+box-sizing: border-box;
+}
 body {
     width: 100%;
     margin: 0%;
     padding: 0%;
     overflow-x: hidden;
     font-family: 'Droid Arabic Kufi', sans-serif;
-    background-color: #f5f7f7;
+    background-color: white;
   }
 
 .header {
@@ -93,5 +94,128 @@ body {
 
 .field-row span {
   color: #333;
+}
+
+/* ================main=============== */
+.main-contant{
+    width: 100%;
+    /* padding:  0px 150px 0px 150px; */
+}
+
+.innerHeader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerContent{
+    height: auto;
+    display: flex;
+    direction: row;
+    justify-content: space-around;
+    padding: 0px 250px;
+    margin: 20px;
+}
+.leftContent{
+    height: auto;
+    border-right: 3px solid #000000;
+}
+.leftContent .text{
+    margin-right: 20px;
+}
+.content{
+    direction: rtl;
+    font-size: 10px;
+    height: auto;
+}
+
+.condition {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 80px;
+    gap: 5px;
+
+  }
+  
+  .clause {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 80px ;
+  }
+  
+  .clause .Arabic,
+  .clause .English {
+    width: auto;
+    font-size: 10pt;
+    line-height: 1.8;
+    gap: 2px;
+  }
+  
+  .clause .Arabic {
+    text-align: right;
+    direction: rtl;
+  }
+  
+  .clause .English {
+    text-align: left;
+    direction: ltr;
+  }
+.signature{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    direction: rtl;
+}
+.Arabic-signature{
+    direction: rtr;
+}
+.English-signature{
+    direction: ltr;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; 
+  gap: 1rem;
+  padding: 1rem 2rem;
+  margin: 50px 10px 0 10px;
+ 
+  height: 200px;
+  overflow: hidden;
+  
+}
+
+.left_eng,
+.main_arabic,
+.footer_logo {
+  flex: 1;
+  padding: 0 1rem;
+}
+
+/* Borders for visual separation */
+.left_eng {
+  border-right: 1px solid black;
+}
+
+.main_arabic {
+  direction: rtl;
+  text-align: right;
+  border-right: 1px solid black;
+ 
+}
+
+.footer_logo {
+  text-align: center;
+  background-image: url("footer_logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+
 }
 
