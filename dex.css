@@ -964,3 +964,52 @@ body {
   left: 0;
 }
 /* footer logos */
+
+/* ====================== */
+/* 📱 Responsive tweaks   */
+/* ====================== */
+
+/* 1️⃣  Small phones (≤ 360 px) */
+@media (max-width: 360px) {
+  .container {
+    width: 160px;          /* tighter row */
+    gap: 6px;
+  }
+  .container button {
+    width: 38px;
+    height: 38px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 2️⃣  Regular smartphones (≤ 480 px) */
+@media (max-width: 480px) {
+  .container {
+    width: 200px;          /* two‑by‑two grid still fits */
+  }
+  .container button {
+    width: 44px;
+    height: 44px;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* 3️⃣  Tablets & up (≥ 600 px) */
+@media (min-width: 600px) {
+  .container {
+    width: 300px;          /* a bit wider on large screens */
+  }
+}
+
+/* 4️⃣  Very wide (≥ 1024 px) — optional */
+@media (min-width: 1024px) {
+  .container {
+    width: 340px;
+  }
+}
