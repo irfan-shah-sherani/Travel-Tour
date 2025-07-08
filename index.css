@@ -18,7 +18,7 @@ font-family: 'Droid Arabic Kufi', sans-serif;
         rgba(255, 255, 255, 0) 70%,
         white 100%
     ),
-    url("/source/background2@2x.png");
+    url("background2@2x.png");
 
 }
 
