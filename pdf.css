@@ -1,0 +1,86 @@
+*
+{margin: 0;
+padding: 0;
+box-sizing: border-box;}
+body {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    overflow-x: hidden;
+    font-family: 'Droid Arabic Kufi', sans-serif;
+    background-color: #f5f7f7;
+  }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 70%,
+        white 100%
+    ),
+    url("background2@2x.png");
+
+}
+
+.header_left_logo {
+    padding: 1rem 9rem;
+}
+
+.header_right_logo {
+    padding: 1rem 7rem;
+}
+
+/* *********************header 1********************* */
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    height: 300px;
+    padding: 1rem 3rem;
+    overflow:hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: solid black 1px;
+}
+.main_qrcode {
+    /* width: 33%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_arbi {
+    width: 35%;
+    text-align: left;
+    font-size: 14px;
+
+}
+.left_english {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 14px;
+    width: 35%;
+    margin-top: 3%;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* spacing between label and value */
+  font-size: 14px;
+}
+
+.field-row h3 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.field-row span {
+  color: #333;
+}
+
