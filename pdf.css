@@ -53,12 +53,23 @@ body {
     align-items: center;
 }
 
-.right_arbi {
+/* .right_arbi {
     width: 35%;
     text-align: left;
     font-size: 14px;
+    align-items:end;
 
+} */
+.right_arbi {
+  direction: rtl;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  
+   font-size: 14px;
+   width: 35%;
 }
+
 .left_english {
     display: flex;
     flex-direction: column;
