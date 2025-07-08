@@ -1,247 +1,256 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--remix icon cdn-->
-    <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Droid+Arabic+Kufi&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Droid+Arabic+Kufi&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <title>Document</title>
-</head>
-<style>
-.page_main_content {
-  display: flex;
-  flex-direction: column;
-}
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_left_logo">
+        <img src="/source/headerleftlogo.png" alt="" />
+      </div>
+      <div class="header_right_logo">
+        <img src="/source/main_logo.png" alt="" />
+      </div>
+    </div>
+    <!-- Main -->
+    <main class="main">
+      <!-- Unique Open Button -->
+      <!-- <button class="login-btn-open">
+        <i class="fas fa-comment-dots"></i>
+      </button> -->
 
-/* Rows stack by default (mobile-first) */
-.content_row {
-  display: flex;
-  flex-direction: column;
-  /*gap: 10px;*/
-}
-
-/* Flex items */
-.main_content {
-  width: 100%;
-}
-
-/* Tablet/Desktop styles */
-@media (min-width: 768px) {
-  .content_row {
-    flex-direction: row; /* Default horizontal */
-    justify-content: space-between;
-  }
-
-  .main_content {
-    width: 48%;
-  }
-
-  /* If you want row-reverse for specific rows, add a class */
-  .reverse-row {
-    flex-direction: row-reverse;
-  }
-}
-
-</style>
-
-<body>
-
-<main class="main">
-    <!-- Unique Open Button -->
-<button class="login-btn-open">
-    <i class="fas fa-comment-dots"></i>
-    </button>
-
-<!-- Unique Modal Wrapper -->
-<div class="login-modal-wrapper">
-    <div class="login-modal">
-
-
-
-        <div class="login-header">
+      <!-- Unique Modal Wrapper -->
+      <!-- <div class="login-modal-wrapper">
+        <div class="login-modal">
+          <div class="login-header">
             <div class="login-blue-line"></div>
             <h2>تسجيل الدخول</h2>
-        </div>
+          </div>
 
-        <p>يرجى إدخال بياناتك لتسجيل الدخول إلى النظام.</p>
+          <p>يرجى إدخال بياناتك لتسجيل الدخول إلى النظام.</p>
 
-        <div class="login-input-group">
+          <div class="login-input-group">
             <label for="login-username">اسم المستخدم</label>
-            <input type="text" id="login-username" placeholder="أدخل اسم المستخدم">
-        </div>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="أدخل اسم المستخدم"
+            />
+          </div>
 
-        <div class="login-input-group">
+          <div class="login-input-group">
             <label for="login-email">البريد الإلكتروني</label>
-            <input type="email" id="login-email" placeholder="أدخل البريد الإلكتروني">
-        </div>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="أدخل البريد الإلكتروني"
+            />
+          </div>
 
-        <div class="login-input-group">
+          <div class="login-input-group">
             <label for="login-password">كلمة المرور</label>
-            <input type="password" id="login-password" placeholder="أدخل كلمة المرور">
+            <input
+              type="password"
+              id="login-password"
+              placeholder="أدخل كلمة المرور"
+            />
+          </div>
+
+          <button class="login-submit-btn">تسجيل الدخول</button>
         </div>
+      </div>
 
-        <button class="login-submit-btn">تسجيل الدخول</button>
-    </div>
-</div>
-<div class="header">
-    <div class="innerHeader">
-        <div class="header_left_logo"><img src="" alt="" /></div>
-        <div class="header_right_logo"><img src="" alt="" /></div>
-    </div>
-
-</div>
-
-<div class="center_container" style="height: 480px;background-color: #F5F7F7">
-    <div class="center_page">
-        <div style="display: flex">
-            <div class="page_header">
-                <div class="page_button"><button>العودة</button></div>
-                <div class="page_heading">التحقق من الوثائق</div>
-            </div>
-            <div class="blue_line"></div>
-        </div>
-        <div class="paragraph" style="margin-bottom: 10px;">
+      <div
+        class="center_container"
+        style="height: 480px; background-color: #f5f7f7"
+      > -->
+        <div class="center_page">
+          <div style="display: flex">
+              <div class="page_header">
+                  <div class="page_button"><button>العودة</button></div>
+                  <div class="page_heading">التحقق من الوثائق</div>
+                </div>
+                <div class="blue_line"></div>
+          </div>
+          <div class="paragraph" style="margin-bottom: 10px">
             <p>
-                خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونيا عبر بوابة
-                خدمات المشتركين وللتحقق من شهادة الاشتراك الرجاء ادخال الرقم المرجعي
-                الخاص بالوثيقة.             </p>
-        </div>
-<div class="page_main_content">
-    <div class="content_row reverse-row">
-          <div class="main_content">
-            <div class="content_text1">
-                <span class="span">إسم الغرفة </span><span class="span2"></span>
+              خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونيا عبر بوابة
+              خدمات المشتركين وللتحقق من شهادة الاشتراك الرجاء ادخال الرقم
+              المرجعي الخاص بالوثيقة.
+            </p>
+          </div>
+          <div class="page_main_content">
+            <div class="content_row reverse-row">
+              <div class="main_content">
+                <div class="content_text1">
+                  <span class="span">إسم الغرفة </span
+                  ><span class="span2"></span>
+                </div>
+              </div>
+              <div class="main_content">
+                <div class="content_text side">
+                  <span class="span">إسم المنشأة </span
+                  ><span class="span2"></span>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="main_content">
-            <div class="content_text side">
-                <span class="span">إسم المنشأة </span><span class="span2"></span>
-            </div>
-        </div>
-    </div>
 
-    <div class="content_row reverse-row">
-         <div class="main_content">
-            <div class="content_text1">
-                <span class="span">رقم المنشأة</span>
-                <span style="font-size: 14px;font-family: 'Times New Roman';font-weight: bold;margin-right: 5px">(700)</span>
-                <span style="font-size: 14px;font-family: 'Times New Roman';margin-right: 5px">7029784977</span>
+            <div class="content_row reverse-row">
+              <div class="main_content">
+                <div class="content_text1">
+                  <span class="span">رقم المنشأة</span>
+                  <span
+                    style="
+                      font-size: 14px;
+                      font-family: 'Times New Roman';
+                      font-weight: bold;
+                      margin-right: 5px;
+                    "
+                    >(700)</span
+                  >
+                  <span
+                    style="
+                      font-size: 14px;
+                      font-family: 'Times New Roman';
+                      margin-right: 5px;
+                    "
+                    >7029784977</span
+                  >
+                </div>
+              </div>
             </div>
-        </div>
 
-    </div>
+            <div class="content_row reverse-row">
+              <div class="main_content side">
+                <div class="content_text1">
+                  <span class="span">رقم الطلب</span>
+                  <span
+                    style="
+                      font-size: 14px;
+                      font-family: 'Times New Roman';
+                      margin-right: 10px;
+                    "
+                  ></span>
+                </div>
+              </div>
+              <div class="main_content">
+                <div class="content_text">
+                  <span class="span">نوع الطلب </span
+                  ><span class="span2"></span>
+                </div>
+              </div>
+            </div>
 
-    <div class="content_row reverse-row">
-         <div class="main_content side">
-            <div class="content_text1">
-                <span class="span">رقم الطلب</span>
-                <span style="font-size: 14px;font-family: 'Times New Roman';margin-right: 10px"></span>
+            <div class="content_row reverse-row">
+              <div class="main_content side">
+                <div class="content_text1">
+                  <span class="span">إسم مقدم الطلب </span
+                  ><span class="span2"></span>
+                </div>
+              </div>
+              <div class="main_content">
+                <div class="content_text">
+                  <span class="span">تاريخ ووقت إنشاء الطلب </span>
+                  <span
+                    style="
+                      font-family: inherit !important;
+                      font-size: 14px;
+                      font-weight: normal;
+                    "
+                  ></span>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="main_content">
-            <div class="content_text">
-                <span class="span">نوع الطلب </span><span class="span2"></span>
-            </div>
-        </div>
-    </div>
 
-    <div class="content_row reverse-row">
-         <div class="main_content side">
-            <div class="content_text1">
-                <span class="span">إسم مقدم الطلب </span><span class="span2"></span>
+            <div class="content_row reverse-row">
+              <div class="main_content">
+                <div class="content_text1">
+                  <span class="span">مبلغ الطلب </span
+                  ><span class="span2"></span>
+                </div>
+              </div>
+              <div class="main_content">
+                <div class="content_text">
+                  <span class="span">تاريخ صلاحية الطلب</span>
+                  <span
+                    style="
+                      font-family: inherit !important;
+                      font-size: 14px;
+                      font-weight: normal;
+                    "
+                  ></span>
+                </div>
+              </div>
             </div>
-        </div>
-         <div class="main_content">
-            <div class="content_text">
-                <span class="span">تاريخ ووقت إنشاء الطلب </span>
-                <span style="font-family: inherit !important;font-size: 14px;font-weight: normal;"></span>
+            <div class="content_row reverse-row">
+              <div class="main_content">
+                <div class="content_text1">
+                  <span class="span">رقم السجل التجاري</span>
+                  <span
+                    style="
+                      font-size: 14px;
+                      font-family: 'Times New Roman';
+                      margin-right: 10px;
+                    "
+                  ></span>
+                </div>
+              </div>
+              <div class="main_content">
+                <div class="content_text">
+                  <span class="span">حالة الطلب </span>
+                  <span class="span2" style="color: #28a745 !important"></span>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <div class="content_row reverse-row">
-         <div class="main_content">
-            <div class="content_text1">
-                <span class="span">مبلغ الطلب </span><span class="span2"></span>
-            </div>
-        </div>
-        <div class="main_content">
-            <div class="content_text">
-                <span class="span">تاريخ صلاحية الطلب</span>
-                <span style="font-family: inherit !important;font-size: 14px;font-weight: normal;"></span>
-            </div>
-        </div>
-    </div>
-    <div class="content_row reverse-row">
-         <div class="main_content">
-            <div class="content_text1">
-                <span class="span">رقم السجل التجاري</span>
-                <span style="font-size: 14px;font-family: 'Times New Roman';margin-right: 10px"></span>
-            </div>
-        </div>
-      <div class="main_content">
-            <div class="content_text">
-                <span class="span">حالة الطلب </span>
-                <span class="span2" style="color: #28a745 !important"></span>
-            </div>
-        </div>
-    </div>
-</div>
-        <div class="page_footer" style="padding:0px !important">
+          </div>
+          <div class="page_footer" style="padding: 0px !important">
             <div class="btn">
-                <!-- Trigger Button -->
-                <label for="modal-toggle" class="open-modal-btn">التحقق مرة أخري</label>
+              <!-- Trigger Button -->
+              <label for="modal-toggle" class="open-modal-btn"
+                >التحقق مرة أخري</label
+              >
 
-                <!-- Modal Structure -->
-                <input type="checkbox" id="modal-toggle" hidden />
+              <!-- Modal Structure -->
+              <input type="checkbox" id="modal-toggle" hidden />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <a href="https://eservices-ucci.org/extract_file/464" style="margin-top:10px">
-                        <label class="open-modal-btn">تحميل</label>
-                    </a>
-                
+              <a
+                href="https://eservices-ucci.org/extract_file/464"
+                style="margin-top: 10px"
+              >
+                <label class="open-modal-btn">تحميل</label>
+              </a>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-<div class="footer" >
-    <div class="footer_content" style="width: width: 32% !important;">
-        <div class="icons">
+      </div>
+      <div class="footer">
+        <div class="footer_content" style="width:  32% !important;">
+          <div class="icons">
             <div class="footer_left_img">
-                <img src="https://eservices-ucci.org/assets/images/ssl_secure.png" alt="SSL Secure" />
+              <img
+                src="https://eservices-ucci.org/assets/images/ssl_secure.png"
+                alt="SSL Secure"
+              />
             </div>
-        <!-- logos -->
-         <!-- From Uiverse.io by andrew-demchenk0 --> 
+              <!-- logos -->
 <div class="container">
   <button><a href="https://www.facebook.com/"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" id="Layer_21" height="24" data-name="Layer 21"><title></title><path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"></path></svg></a></button>
   <!-- youtube -->
@@ -253,30 +262,42 @@
   
 </div>
          <!-- logos -->
+          </div>
+          <div class="footer_left_heading">يفضل استخدام متصفح جوجل كروم</div>
         </div>
-        <div class="footer_left_heading">يفضل استخدام متصفح جوجل كروم</div>
-    </div>
 
-    <div class="footer_content1">
-        <div class="footer_support_title" style="padding-top: 2rem;font-size: 13px;">للإستفسار والدعم الفني</div>
-        <div class="footer_support_number" style="font-size: 13px;">00966112641362</div>
-        <div class="footer_separator"></div>
-    </div>
+        <div class="footer_content1">
+          <div
+            class="footer_support_title"
+            style="padding-top: 2rem; font-size: 13px"
+          >
+            للإستفسار والدعم الفني
+          </div>
+          <div class="footer_support_number" style="font-size: 13px">
+            00966112641362
+          </div>
+          <div class="footer_separator"></div>
+        </div>
 
-    <div class="footer_content2">
-        <div class="footer_dev" style="float: right; padding: 2rem 8rem;">
+        <div class="footer_content2">
+          <div class="footer_dev" style="float: right; padding: 2rem 8rem">
             <div class="footer_dev_text">تطوير وتشغيل</div>
             <div class="footer_logo">
-                <img src="https://eservices-ucci.org/assets/images/worldofss-logo.png" alt="World of SS Logo" />
+              <img
+                src="https://eservices-ucci.org/assets/images/worldofss-logo.png"
+                alt="World of SS Logo"
+              />
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 
-<div class="footer-copyright">
-    <p>جميع الحقوق محفوظة الغرفة التجارية في عنيزة © <span class="year-text">2025</span></p>
-</div>
- </main>
-</body>
-
+      <div class="footer-copyright">
+        <p>
+          جميع الحقوق محفوظة الغرفة التجارية في عنيزة ©
+          <span class="year-text">2025</span>
+        </p>
+      </div>
+    </main>
+  </body>
 </html>
