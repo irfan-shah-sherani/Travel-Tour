@@ -27,6 +27,7 @@ const db = mysql.createConnection({
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASS || "king",
   database: process.env.DB_NAME || "Traval",
+  port: process.env.DB_PORT || 3306, 
   charset: "utf8mb4"
 });
 
