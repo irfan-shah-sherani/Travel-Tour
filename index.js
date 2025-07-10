@@ -23,10 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method")); // For PUT/DELETE support in forms
 // MySQL Connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "king",
-  database: "Traval",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "king",
+  database: process.env.DB_NAME || "Traval",
   charset: "utf8mb4"
 });
 
