@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "postinstall": "puppeteer install"
-},
-
-  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "puppeteer install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/irfan-shah-sherani/Travel-Tour.git"
@@ -22,11 +20,12 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.0",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "html-pdf-node": "^1.0.8",
     "mysql2": "^3.14.1",
     "puppeteer": "^24.12.1",
     "qrcode": "^1.5.4"
   }
-  
 }

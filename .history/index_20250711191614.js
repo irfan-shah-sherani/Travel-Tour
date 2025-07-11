@@ -3,7 +3,7 @@ const path = require("path");
 const mysql = require("mysql2");
 const QRCode = require("qrcode");
 const crypto = require("crypto");
-const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const pdf = require('html-pdf-node');
@@ -211,31 +211,6 @@ app.get("/form", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "form.html"));
 });
 
-
-
-
-app.get("/pdf", (req, res) => {
-  const token = req.query.token;
-  if (!token) return res.status(400).json({ error: "Token is required" });
-
-  db.query("SELECT * FROM TravalRecord WHERE qr_token = ?", [token], (err, results) => {
-    if (err) return res.status(500).json({ error: "Database error" });
-    if (results.length === 0) return res.status(404).json({ error: "Record not found" });
-
-    const record = results[0];
-
-    // Assuming you already saved a QR code URL or know how to generate one
-    const qrUrl = `/qrcodes/${record.qr_token}.png`; // Or a full URL
-
-    res.json({
-      qrcode_url: qrUrl,
-      applicant_name: record.applicant_name,
-      record_number: record.record_number,
-      // ...any other fields you want to send
-    });
-  });
-});
-
 // Generate PDF from record
 app.get("/download-pdf", async (req, res) => {
   const token = req.query.token;
@@ -308,6 +283,56 @@ await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
     }
   });
 });
+
+
+// app.get("/download-pdf", async (req, res) => {
+//   const token = req.query.token;
+//   if (!token) return res.status(400).json({ error: "Token is required" });
+
+//   db.query(
+//     "SELECT * FROM TravalRecord WHERE qr_token = ?",
+//     [token],
+//     async (err, results) => {
+//       if (err || results.length === 0) {
+//         return res.status(404).json({ error: "Data not found" });
+//       }
+
+//       const record = results[0];
+
+//       try {
+//         // 1. Render the EJS view as HTML string
+//         const htmlContent = await ejs.renderFile(
+//           path.join(__dirname, "views", "pdf.ejs"),
+//           { record }
+//         );
+
+//         // Optional: Debug output to check HTML
+//         fs.writeFileSync("debug_output.html", htmlContent);
+//         console.log("✅ Rendered HTML length:", htmlContent.length);
+
+//         // 2. Generate PDF from HTML content
+//         const file = { content: htmlContent };
+//         const options = {
+//           format: "A4",
+//           printBackground: true,
+//           margin: { top: "10mm", bottom: "10mm" },
+//         };
+
+//         const pdfBuffer = await pdf.generatePdf(file, options);
+
+//         // 3. Send PDF for download
+//         res.set({
+//           "Content-Type": "application/pdf",
+//           "Content-Disposition": `attachment; filename="record_${token}.pdf"`,
+//         });
+//         res.send(pdfBuffer);
+//       } catch (error) {
+//         console.error("❌ PDF generation error:", error);
+//         res.status(500).send("Failed to generate PDF");
+//       }
+//     }
+//   );
+// });
 
 
 // Start server

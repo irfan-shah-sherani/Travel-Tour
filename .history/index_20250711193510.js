@@ -214,28 +214,6 @@ app.get("/form", (req, res) => {
 
 
 
-app.get("/pdf", (req, res) => {
-  const token = req.query.token;
-  if (!token) return res.status(400).json({ error: "Token is required" });
-
-  db.query("SELECT * FROM TravalRecord WHERE qr_token = ?", [token], (err, results) => {
-    if (err) return res.status(500).json({ error: "Database error" });
-    if (results.length === 0) return res.status(404).json({ error: "Record not found" });
-
-    const record = results[0];
-
-    // Assuming you already saved a QR code URL or know how to generate one
-    const qrUrl = `/qrcodes/${record.qr_token}.png`; // Or a full URL
-
-    res.json({
-      qrcode_url: qrUrl,
-      applicant_name: record.applicant_name,
-      record_number: record.record_number,
-      // ...any other fields you want to send
-    });
-  });
-});
-
 // Generate PDF from record
 app.get("/download-pdf", async (req, res) => {
   const token = req.query.token;

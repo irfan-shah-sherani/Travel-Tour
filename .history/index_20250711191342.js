@@ -3,7 +3,7 @@ const path = require("path");
 const mysql = require("mysql2");
 const QRCode = require("qrcode");
 const crypto = require("crypto");
-const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const pdf = require('html-pdf-node');
@@ -207,36 +207,84 @@ app.get("/form-record", (req, res) => {
 });
 
 // Serve the HTML form
-app.get("/form", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "form.html"));
-});
+// app.get("/form", (req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "form.html"));
+// });
+
+// // Generate PDF from record
+// app.get("/download-pdf", async (req, res) => {
+//   const token = req.query.token;
+//   if (!token) return res.status(400).json({ error: 'Token is required' });
+
+//   db.query("SELECT * FROM TravalRecord WHERE qr_token = ?", [token], async (err, results) => {
+//     if (err || results.length === 0) {
+//       return res.status(404).json({ error: "Data not found" });
+//     }
+
+//     const record = results[0];
+
+//     try {
+//       const browser = await puppeteer.launch({
+//         headless: 'new',
+//         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+//       });
+
+//       const page = await browser.newPage();
+
+//       const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+//       // const url = `${baseUrl}/pdf.html?token=${token}`;
+
+
+//       const url = `http://localhost:3000/pdf.html?token=${token}`;
+//       // await page.goto(url, { waitUntil: 'networkidle0' });
+
+//       // await page.evaluate((qrcodeUrl) => {
+//       //   const img = document.getElementById("qrcode");
+//       //   if (img) {
+//       //     img.src = qrcodeUrl;
+//       //   }
+//       // }, record.qrcode_url);
+
+//       // await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
+
+
+// await page.goto(url, { waitUntil: 'load', timeout: 30000 });
+
+// // Wait for layout to load
+// await page.waitForSelector("#qrcode", { timeout: 15000 });
+
+// // Inject QR code directly into image
+// await page.evaluate((qrcodeUrl) => {
+//   const img = document.getElementById("qrcode");
+//   if (img) img.src = qrcodeUrl;
+// }, record.qrcode_url);
+
+// // Wait for src to be applied
+// await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
 
 
 
+//       const pdfBuffer = await page.pdf({
+//         format: "A4",
+//         printBackground: true,
+//         scale: 0.8
+//       });
 
-app.get("/pdf", (req, res) => {
-  const token = req.query.token;
-  if (!token) return res.status(400).json({ error: "Token is required" });
+//       await browser.close();
 
-  db.query("SELECT * FROM TravalRecord WHERE qr_token = ?", [token], (err, results) => {
-    if (err) return res.status(500).json({ error: "Database error" });
-    if (results.length === 0) return res.status(404).json({ error: "Record not found" });
+//       res.set({
+//         "Content-Type": "application/pdf",
+//         "Content-Disposition": `attachment; filename="record_${token}.pdf"`
+//       });
+//       res.send(pdfBuffer);
+//     } catch (err) {
+//       console.error("PDF generation error:", err);
+//       res.status(500).send("Failed to generate PDF");
+//     }
+//   });
+// });
 
-    const record = results[0];
 
-    // Assuming you already saved a QR code URL or know how to generate one
-    const qrUrl = `/qrcodes/${record.qr_token}.png`; // Or a full URL
-
-    res.json({
-      qrcode_url: qrUrl,
-      applicant_name: record.applicant_name,
-      record_number: record.record_number,
-      // ...any other fields you want to send
-    });
-  });
-});
-
-// Generate PDF from record
 app.get("/download-pdf", async (req, res) => {
   const token = req.query.token;
   if (!token) return res.status(400).json({ error: 'Token is required' });
@@ -249,67 +297,30 @@ app.get("/download-pdf", async (req, res) => {
     const record = results[0];
 
     try {
-      const browser = await puppeteer.launch({
-        headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      });
+      // Render EJS template to HTML string
+      const htmlContent = await ejs.renderFile(
+        path.join(__dirname, "views", "pdf.ejs"),
+        { record: record }
+      );
 
-      const page = await browser.newPage();
+      // Generate PDF from the rendered HTML
+      const file = { content: htmlContent };
+      const options = { format: 'A4', printBackground: true };
 
-      const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-      // const url = `${baseUrl}/pdf.html?token=${token}`;
-
-
-      const url = `http://localhost:3000/pdf.html?token=${token}`;
-      // await page.goto(url, { waitUntil: 'networkidle0' });
-
-      // await page.evaluate((qrcodeUrl) => {
-      //   const img = document.getElementById("qrcode");
-      //   if (img) {
-      //     img.src = qrcodeUrl;
-      //   }
-      // }, record.qrcode_url);
-
-      // await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
-
-
-await page.goto(url, { waitUntil: 'load', timeout: 30000 });
-
-// Wait for layout to load
-await page.waitForSelector("#qrcode", { timeout: 15000 });
-
-// Inject QR code directly into image
-await page.evaluate((qrcodeUrl) => {
-  const img = document.getElementById("qrcode");
-  if (img) img.src = qrcodeUrl;
-}, record.qrcode_url);
-
-// Wait for src to be applied
-await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
-
-
-
-      const pdfBuffer = await page.pdf({
-        format: "A4",
-        printBackground: true,
-        scale: 0.8
-      });
-
-      await browser.close();
+      const pdfBuffer = await pdf.generatePdf(file, options);
 
       res.set({
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="record_${token}.pdf"`
       });
-      res.send(pdfBuffer);
+
+      res.send(pdfBuffer); // ✅ This will download the PDF directly
     } catch (err) {
       console.error("PDF generation error:", err);
       res.status(500).send("Failed to generate PDF");
     }
   });
 });
-
-
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -235,7 +235,6 @@ app.get("/pdf", (req, res) => {
     });
   });
 });
-
 // Generate PDF from record
 app.get("/download-pdf", async (req, res) => {
   const token = req.query.token;
