@@ -223,11 +223,11 @@ app.get("/download-pdf", async (req, res) => {
       const page = await browser.newPage();
 
       const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-      // const url = `${baseUrl}/pdf.html?token=${token}`;
+      const url = `${baseUrl}/pdf.html?token=${token}`;
 
 
       const url = `http://localhost:3000/pdf.html?token=${token}`;
-      // await page.goto(url, { waitUntil: 'networkidle0' });
+      await page.goto(url, { waitUntil: 'networkidle0' });
 
       // await page.evaluate((qrcodeUrl) => {
       //   const img = document.getElementById("qrcode");

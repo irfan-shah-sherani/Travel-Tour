@@ -1,0 +1,33 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "scripts": {
+  "start": "node index.js",
+  "postinstall": "puppeteer install"
+}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irfan-shah-sherani/Travel-Tour.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irfan-shah-sherani/Travel-Tour/issues"
+  },
+  "homepage": "https://github.com/irfan-shah-sherani/Travel-Tour#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.14.1",
+    "puppeteer": "^24.12.1",
+    "qrcode": "^1.5.4"
+  }
+  
+}
