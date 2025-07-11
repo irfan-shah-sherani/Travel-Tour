@@ -105,71 +105,6 @@ app.get("/records", (req, res) => {
 
 
 // POST: Insert a new record and generate QR code
-// app.post("/submit", (req, res) => {
-//   const {
-//     room_name,
-//     facility_name,
-//     facility_number,
-//     request_number,
-//     request_type,
-//     applicant_name,
-//     creation_date,
-//     request_amount,
-//     expiry_date,
-//     record_number,
-//     request_status,
-//     reference_number,
-//     passport_number,
-//   } = req.body;
-
-//   const qrToken = crypto.randomBytes(16).toString("hex");
-//   const qrUrl = `http://localhost:3000/form?token=${qrToken}`;
-
-//   QRCode.toDataURL(qrUrl, (err, qrBase64) => {
-//     if (err) {
-//       console.error("QR Generation Failed:", err);
-//       return res.status(500).json({ error: "QR Code generation failed" });
-//     }
-
-//     const insertQuery = `
-//       INSERT INTO TravalRecord (
-//         room_name, facility_name, facility_number,
-//         request_number, request_type, applicant_name,
-//         creation_date, request_amount, expiry_date,
-//         record_number, request_status, reference_number,
-//         passport_number, qrcode_url, qr_token
-//       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-//     `;
-
-//     const insertValues = [
-//       room_name,
-//       facility_name,
-//       facility_number,
-//       request_number,
-//       request_type,
-//       applicant_name,
-//       creation_date,
-//       request_amount,
-//       expiry_date,
-//       record_number,
-//       request_status,
-//       reference_number,
-//       passport_number,
-//       qrBase64,
-//       qrToken,
-//     ];
-
-//     db.query(insertQuery, insertValues, (err, result) => {
-//       if (err) {
-//         console.error("Insert Failed:", err);
-//         return res.status(500).json({ error: "Insert failed" });
-//       }
-//       res.redirect("/Dashboard");
-//     });
-//   });
-// });
-
-
 app.post("/submit", (req, res) => {
   const {
     room_name,
@@ -188,13 +123,8 @@ app.post("/submit", (req, res) => {
   } = req.body;
 
   const qrToken = crypto.randomBytes(16).toString("hex");
+  const qrUrl = `http://localhost:3000/form?token=${qrToken}`;
 
-  // ✅ This is the URL the QR code will contain
-  const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-  const qrUrl = `${baseUrl}/form?token=${qrToken}`;
-
-
-  // ✅ Generate base64 image of QR code (just to store/show as image if needed)
   QRCode.toDataURL(qrUrl, (err, qrBase64) => {
     if (err) {
       console.error("QR Generation Failed:", err);
@@ -225,8 +155,8 @@ app.post("/submit", (req, res) => {
       request_status,
       reference_number,
       passport_number,
-      qrUrl, // ✅ Save the actual URL — not base64 image
-      qrToken
+      qrBase64,
+      qrToken,
     ];
 
     db.query(insertQuery, insertValues, (err, result) => {
@@ -234,13 +164,10 @@ app.post("/submit", (req, res) => {
         console.error("Insert Failed:", err);
         return res.status(500).json({ error: "Insert failed" });
       }
-
-      // ✅ Redirect to dashboard after insert
       res.redirect("/Dashboard");
     });
   });
 });
-
 
 // DELETE: Remove a record
 app.post("/delete/:token",checkAuth, (req, res) => {
@@ -279,41 +206,15 @@ app.get("/form-record", (req, res) => {
   });
 });
 
-// // Serve the HTML form
-// app.get("/form", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "form.html"));
-// });
-
-
-// app.get("/pdf", (req, res) => {
-//   const token = req.query.token;
-//   if (!token) return res.status(400).json({ error: "Token is required" });
-
-//   db.query("SELECT * FROM TravalRecord WHERE qr_token = ?", [token], (err, results) => {
-//     if (err) return res.status(500).json({ error: "Database error" });
-//     if (results.length === 0) return res.status(404).json({ error: "Record not found" });
-
-//     const record = results[0];
-
-//     // Assuming you already saved a QR code URL or know how to generate one
-//     const qrUrl = `/qrcodes/${record.qr_token}.png`; // Or a full URL
-
-//     res.json({
-//       qrcode_url: qrUrl,
-//       applicant_name: record.applicant_name,
-//       record_number: record.record_number,
-//       // ...any other fields you want to send
-//     });
-//   });
-// });
-
-// Serves the static HTML form page
+// Serve the HTML form
 app.get("/form", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "form.html"));
 });
 
-// Provides record data for a given token
-app.get("/pdf", (req, res) => {
+
+app.get
+
+app.get("/pdf-data", (req, res) => {
   const token = req.query.token;
   if (!token) return res.status(400).json({ error: "Token is required" });
 
@@ -323,14 +224,14 @@ app.get("/pdf", (req, res) => {
 
     const record = results[0];
 
-    // ✅ Better: use full URL if possible
-    const qrUrl = `http://localhost:3000/form?token=${record.qr_token}`;
+    // Assuming you already saved a QR code URL or know how to generate one
+    const qrUrl = `/qrcodes/${record.qr_token}.png`; // Or a full URL
 
     res.json({
       qrcode_url: qrUrl,
       applicant_name: record.applicant_name,
       record_number: record.record_number,
-      // Add more fields if needed
+      // ...any other fields you want to send
     });
   });
 });
@@ -355,13 +256,11 @@ app.get("/download-pdf", async (req, res) => {
 
       const page = await browser.newPage();
 
-      // const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+      const baseUrl = process.env.BASE_URL || "http://localhost:3000";
       // const url = `${baseUrl}/pdf.html?token=${token}`;
 
-      const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-      const url = `${baseUrl}/pdf.html?token=${token}`;
 
-      // const url = `http://localhost:3000/pdf.html?token=${token}`;
+      const url = `http://localhost:3000/pdf.html?token=${token}`;
       // await page.goto(url, { waitUntil: 'networkidle0' });
 
       // await page.evaluate((qrcodeUrl) => {
@@ -383,7 +282,8 @@ await page.waitForSelector("#qrcode", { timeout: 15000 });
 await page.evaluate((qrcodeUrl) => {
   const img = document.getElementById("qrcode");
   if (img) img.src = qrcodeUrl;
-}, `${baseUrl}${record.qrcode_url}`);
+}, record.qrcode_url);
+
 // Wait for src to be applied
 await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
 

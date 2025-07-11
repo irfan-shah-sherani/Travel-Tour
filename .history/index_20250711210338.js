@@ -187,11 +187,8 @@ app.post("/submit", (req, res) => {
     passport_number,
   } = req.body;
 
-  const qrToken = crypto.randomBytes(16).toString("hex");
-
-  // ✅ This is the URL the QR code will contain
-  const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-  const qrUrl = `${baseUrl}/form?token=${qrToken}`;
+const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+const qrUrl = `${baseUrl}/form?token=${qrToken}`;
 
 
   // ✅ Generate base64 image of QR code (just to store/show as image if needed)

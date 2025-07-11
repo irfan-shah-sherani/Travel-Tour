@@ -61,7 +61,7 @@
               data.forEach((record) => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
-
+        <td>${record.record_id}</td>
         <td>${record.room_name}</td>
         <td>${record.facility_name}</td>
         <td>${record.facility_number}</td>
@@ -75,13 +75,7 @@
         <td>${record.request_status}</td>
         <td>${record.reference_number}</td>
         <td>${record.passport_number}</td>
-        <td>
-        <img 
-          src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(record.qrcode_url)}&size=100x100" 
-          class="qr-img" 
-          alt="QR Code"
-        />
-      </td>
+        <td>${record.qrcode_url ? `<img src="${record.qrcode_url}" class="qr-img" alt="QR Code">` : "No QR"}</td>
         <td>
           <a href="/download-pdf?token=${record.qr_token}">
             <button class="download-btn btn" type="button">Download PDF</button>
@@ -93,9 +87,9 @@
           </form>
         </td>
         <td>
-           <a href="${record.qrcode_url}" target="_blank">
-  <button class="btn">Open Form</button>
-</a>
+          <form action="${record.qrcode_ur l}" method="POST">
+            <button class="delete-btn btn" type="submit">Delete</button>
+          </form>
           </td>
       `;
                 tbody.appendChild(tr);

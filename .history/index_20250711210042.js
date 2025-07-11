@@ -190,9 +190,7 @@ app.post("/submit", (req, res) => {
   const qrToken = crypto.randomBytes(16).toString("hex");
 
   // ✅ This is the URL the QR code will contain
-  const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-  const qrUrl = `${baseUrl}/form?token=${qrToken}`;
-
+  const qrUrl = `http://localhost:3000/form?token=${qrToken}`;
 
   // ✅ Generate base64 image of QR code (just to store/show as image if needed)
   QRCode.toDataURL(qrUrl, (err, qrBase64) => {
@@ -355,11 +353,11 @@ app.get("/download-pdf", async (req, res) => {
 
       const page = await browser.newPage();
 
-      // const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+      const baseUrl = process.env.BASE_URL || "http://localhost:3000";
       // const url = `${baseUrl}/pdf.html?token=${token}`;
 
       const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-      const url = `${baseUrl}/pdf.html?token=${token}`;
+const url = `${baseUrl}/pdf.html?token=${token}`;
 
       // const url = `http://localhost:3000/pdf.html?token=${token}`;
       // await page.goto(url, { waitUntil: 'networkidle0' });
@@ -383,7 +381,8 @@ await page.waitForSelector("#qrcode", { timeout: 15000 });
 await page.evaluate((qrcodeUrl) => {
   const img = document.getElementById("qrcode");
   if (img) img.src = qrcodeUrl;
-}, `${baseUrl}${record.qrcode_url}`);
+}, record.qrcode_url);
+
 // Wait for src to be applied
 await page.waitForSelector("#qrcode[src]", { timeout: 15000 });
 

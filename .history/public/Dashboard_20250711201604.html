@@ -60,8 +60,7 @@
               tbody.innerHTML = "";
               data.forEach((record) => {
                 const tr = document.createElement("tr");
-                tr.innerHTML = `
-
+                tr.innerHTML = 
         <td>${record.room_name}</td>
         <td>${record.facility_name}</td>
         <td>${record.facility_number}</td>
@@ -93,9 +92,9 @@
           </form>
         </td>
         <td>
-           <a href="${record.qrcode_url}" target="_blank">
-  <button class="btn">Open Form</button>
-</a>
+           <a href="/${record.qrcode_url}">
+            <button class="download-btn btn" type="button">Download PDF</button>
+          </a>
           </td>
       `;
                 tbody.appendChild(tr);
