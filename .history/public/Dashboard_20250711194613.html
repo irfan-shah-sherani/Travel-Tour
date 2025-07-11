@@ -77,7 +77,7 @@
         <td>${record.passport_number}</td>
         <td>${record.qrcode_url ? `<img src="${record.qrcode_url}" class="qr-img" alt="QR Code">` : "No QR"}</td>
         <td>
-          <a href="/pdf?token=${record.qr_token}">
+          <a href="/dpdf?token=${record.qr_token}">
             <button class="download-btn btn" type="button">Download PDF</button>
           </a>
         </td>
