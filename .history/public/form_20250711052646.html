@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>التحقق من الوثائق</title>
+
+    <link rel="stylesheet" href="form.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Droid+Arabic+Kufi&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header_left_logo">
+        <img src="/source/headerleftlogo.png" alt="left logo" />
+      </div>
+      <div class="header_right_logo">
+        <img src="/source/main_logo.png" alt="main logo" />
+      </div>
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="center_page">
+        <!-- Page Header -->
+        <div class="page_header">
+          <div class="page_button"><button>العودة</button></div>
+          <div class="page_heading">التحقق من الوثائق</div>
+        </div>
+
+        <!-- Paragraph -->
+        <div class="paragraph">
+          <p>
+            خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونيا عبر بوابة
+            خدمات المشتركين وللتحقق من شهادة الاشتراك الرجاء ادخال الرقم المرجعي
+            الخاص بالوثيقة.
+          </p>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page_main_content">
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">إسم الغرفة</span> <span class="span2"></span>
+              </div>
+            </div>
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">إسم المنشأة</span>
+                <span class="span2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">رقم المنشأة</span>
+                <span class="span2">7029784977</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">رقم الطلب</span> <span class="span2"></span>
+              </div>
+            </div>
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">نوع الطلب</span> <span class="span2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">إسم مقدم الطلب</span>
+                <span class="span2"></span>
+              </div>
+            </div>
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">تاريخ ووقت إنشاء الطلب</span>
+                <span class="span2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">مبلغ الطلب</span> <span class="span2"></span>
+              </div>
+            </div>
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">تاريخ صلاحية الطلب</span>
+                <span class="span2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content_row">
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">رقم السجل التجاري</span>
+                <span class="span2"></span>
+              </div>
+            </div>
+            <div class="main_content">
+              <div class="content_text">
+                <span class="span">حالة الطلب</span>
+                <span class="span2" style="color: #28a745"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn">
+          <label class="open-modal-btn button">التحقق مرة أخري</label>
+          <button class="open-modal-btn button" onclick="downloadPDF()">تحميل</button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer_content">
+        <img
+          src="https://eservices-ucci.org/assets/images/ssl_secure.png"
+          alt="ssl"
+          style="height: 40px"
+        />
+        <div class="footer_left_heading">يفضل استخدام متصفح جوجل كروم</div>
+        <div class="icons">
+          <a href="#"><i class="fab fa-facebook-f icon"></i></a>
+          <a href="#"><i class="fab fa-twitter icon"></i></a>
+          <a href="#"><i class="fab fa-youtube icon"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in icon"></i></a>
+        </div>
+      </div>
+
+      <div class="footer_content1">
+        <div class="footer_support_title">للإستفسار والدعم الفني</div>
+        <div class="footer_support_number">00966112641362</div>
+      </div>
+
+      <div class="footer_content2">
+        <div class="footer_dev_text">تطوير وتشغيل</div>
+        <div class="footer_logo">
+          <img
+            src="https://eservices-ucci.org/assets/images/worldofss-logo.png"
+            alt="logo"
+            style="height: 40px"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      جميع الحقوق محفوظة الغرفة التجارية في عنيزة ©
+      <span class="year-text">2025</span>
+    </div><script>
+  function downloadPDF() {
+    const element = document.body; // or use a specific div like document.getElementById('print-area')
+    const opt = {
+      margin: 0.2,
+      filename: 'page.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  }
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  </body>
+</html>

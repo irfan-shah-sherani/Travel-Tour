@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body style="background-color: black">
+
+  <div class="wrapper">
+    <form class="form" method="POST" action="/login">
+      <span class="title">Login</span>
+
+      <!-- Username Field -->
+      <div class="input-container">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <g stroke="url(#gradient-stroke)" fill="none" stroke-width="1">
+            <path d="M21.6365 5H3L12.2275 12.3636L21.6365 5Z"></path>
+          </g>
+        </svg>
+        <input class="input" type="text" name="username" placeholder="Username" required />
+      </div>
+
+      <!-- Password Field -->
+      <div class="input-container">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <g stroke="url(#gradient-stroke)" fill="none" stroke-width="1">
+            <path d="M3.5 15.55L9.2 9.85L12.35 13L11.6 13.75H10.25L9.8 15.1L8 16L7.55 18.25L5.5 19.6H3.5V15.55Z"></path>
+          </g>
+        </svg>
+        <input class="input" type="password" name="password" placeholder="Password" required />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="login-button">
+        <input class="input" type="submit" value="Login" />
+      </div>
+
+      <div class="texture"></div>
+    </form>
+  </div>
+</body>
+</html>

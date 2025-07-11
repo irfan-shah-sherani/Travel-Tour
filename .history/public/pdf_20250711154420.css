@@ -1,0 +1,617 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header img{
+    width: 100vw;
+    height: 100%;
+    
+}
+body {
+    width: 100%;
+    margin: 0%;
+    padding: 40px;
+    overflow-x: hidden;
+    font-family: 'Droid Arabic Kufi', sans-serif;
+    background-color: white;
+}
+
+#qrcode {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #000;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#qrcode-link {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: blue;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 70%,
+        white 100%
+    ),
+    url("background2@2x.png");
+}
+
+.header_left_logo {
+    padding: 1rem 9rem;
+}
+
+.header_right_logo {
+    padding: 1rem 7rem;
+}
+
+/* *********************header 1********************* */
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    height: 300px;
+    padding: 1rem 3rem;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: solid black 1px;
+}
+
+.main_qrcode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_arbi {
+    direction: rtl;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 35%;
+}
+
+.left_english {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 14px;
+    width: 35%;
+    margin-top: 3%;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 14px;
+}
+
+.field-row h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.field-row span {
+    color: #333;
+}
+
+/* ================main=============== */
+.main-contant {
+    width: 100%;
+}
+
+.innerHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerContent {
+    height: auto;
+    display: flex;
+    direction: row;
+    justify-content: space-around;
+    padding: 0px 250px;
+    margin: 20px;
+}
+
+.leftContent {
+    height: auto;
+    border-right: 3px solid #000000;
+}
+
+.leftContent .text {
+    margin-right: 20px;
+}
+
+.content {
+    direction: rtl;
+    font-size: 10px;
+    height: auto;
+}
+
+.condition {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 80px;
+    gap: 5px;
+}
+
+.clause {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 80px;
+}
+
+.clause .Arabic,
+.clause .English {
+    width: auto;
+    font-size: 10pt;
+    line-height: 1.8;
+    gap: 2px;
+}
+
+.clause .Arabic {
+    text-align: right;
+    direction: rtl;
+}
+
+.clause .English {
+    text-align: left;
+    direction: ltr;
+}
+
+.signature {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    direction: rtl;
+}
+
+.Arabic-signature {
+    direction: rtl;
+}
+
+.English-signature {
+    direction: ltr;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; 
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin: 50px 10px 0 10px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.left_eng,
+.main_arabic,
+.footer_logo {
+    flex: 1 1 0;
+    width: 0;
+    padding: 0 1rem;
+    min-width: 0;
+}
+
+.left_eng {
+    border-right: 1px solid black;
+}
+
+.main_arabic {
+    direction: rtl;
+    text-align: right;
+    border-right: 1px solid black;
+}
+
+.footer_logo {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    height: 100%;
+    background-image: url("footer_logo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    display: block;
+}
+
+/* ================== PRINT STYLES ================== */
+@media print {
+    /* Reset print defaults */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    /* Page setup */
+    @page {
+        size: A4;
+        margin: 0.5in;
+        margin-top: 0.3in;
+        margin-bottom: 0.3in;
+    }
+
+    /* Body adjustments for print */
+    body {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        zoom: 94% !important;
+    }
+
+    /* Container adjustments */
+    .pdf-container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Header print styles */
+    .header {
+        height: auto !important;
+        min-height: 80px !important;
+        background-image: none !important;
+        background: white !important;
+        border-bottom: 1px solid #000 !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 10px !important;
+    }
+
+    .header_left_logo {
+        padding: 0.5rem 2rem !important;
+        max-width: 200px !important;
+        height: auto !important;
+    }
+
+    .header_left_logo img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Header1 print styles */
+    .header1 {
+        height: auto !important;
+        min-height: 180px !important;
+        padding: 1rem 2rem !important;
+        margin: 0 !important;
+        border-bottom: 2px solid black !important;
+        page-break-inside: avoid !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+    .left_english,
+    .right_arbi {
+        width: 32% !important;
+        font-size: 11px !important;
+        margin-top: 0 !important;
+    }
+
+    .main_qrcode {
+        width: 30% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .main_qrcode p {
+        font-size: 9px !important;
+        margin: 2px 0 !important;
+        text-align: center !important;
+    }
+
+    #qrcode {
+        width: 100px !important;
+        height: 100px !important;
+        border: 1px solid #000 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .field-row {
+        margin-bottom: 3px !important;
+        font-size: 11px !important;
+    }
+
+    .field-row h3 {
+        font-size: 11px !important;
+        font-weight: bold !important;
+        margin: 0 !important;
+    }
+
+    .field-row p {
+        font-size: 11px !important;
+        margin: 0 !important;
+    }
+
+    /* Main content print styles */
+    .main-contant {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .innerHeader {
+        font-size: 18px !important;
+        font-weight: bold !important;
+        margin: 15px 0 !important;
+        text-align: center !important;
+    }
+
+    .innerContent {
+        padding: 0 50px !important;
+        margin: 15px 0 !important;
+        display: flex !important;
+        justify-content: space-around !important;
+    }
+
+    .leftContent {
+        border-right: 2px solid #000 !important;
+        padding-right: 15px !important;
+    }
+
+    .leftContent .text,
+    .rightContent .text {
+        font-size: 10px !important;
+        margin-bottom: 3px !important;
+    }
+
+    /* Conditions print styles */
+    .condition {
+        padding: 15px 30px !important;
+        gap: 3px !important;
+    }
+
+    .clause {
+        padding: 0 30px !important;
+        margin-bottom: 5px !important;
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        page-break-inside: avoid !important;
+    }
+
+    .clause .Arabic,
+    .clause .English {
+        font-size: 9pt !important;
+        line-height: 1.4 !important;
+        width: 48% !important;
+    }
+
+    .clause .Arabic {
+        text-align: right !important;
+        direction: rtl !important;
+    }
+
+    .clause .English {
+        text-align: left !important;
+        direction: ltr !important;
+    }
+
+    /* Signature print styles */
+    .signature {
+        margin: 20px 0 !important;
+        padding: 0 50px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        font-size: 12px !important;
+    }
+
+    .Arabic-signature {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    .English-signature {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+
+    /* Footer print styles */
+    .main-footer {
+        height: auto !important;
+        min-height: 120px !important;
+        padding: 1rem !important;
+        margin: 30px 0 0 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        border-top: 1px solid #000 !important;
+        page-break-inside: avoid !important;
+    }
+
+    .left_eng,
+    .main_arabic {
+        width: 32% !important;
+        font-size: 9px !important;
+        padding: 0 0.5rem !important;
+        border-right: 1px solid black !important;
+    }
+
+    .footer_logo {
+        width: 32% !important;
+        height: 100px !important;
+        background-size: contain !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        border: none !important;
+    }
+
+    .main_arabic {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    /* Bottom line print styles */
+    .bottom-line {
+        background-color: #708090 !important;
+        color: white !important;
+        padding: 0.5rem 1rem !important;
+        margin: 10px 20px !important;
+        border-radius: 15px 0 15px 0 !important;
+        text-align: right !important;
+        font-size: 10px !important;
+        height: auto !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Prevent page breaks in critical sections */
+    .header,
+    .header1,
+    .innerHeader,
+    .signature,
+    .main-footer {
+        page-break-inside: avoid !important;
+    }
+
+    /* Ensure colors and backgrounds print */
+    .bottom-line,
+    .header,
+    .footer_logo {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide unnecessary elements for print */
+    .no-print {
+        display: none !important;
+    }
+
+    /* Ensure images print correctly */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Force text to be black for better printing */
+    body, p, h1, h2, h3, h4, h5, h6, div, span {
+        color: black !important;
+    }
+
+    /* Special handling for Arabic text */
+    .right_arbi h3,
+    .Arabic,
+    .Arabic-signature {
+        font-weight: bold !important;
+    }
+
+    /* Ensure proper spacing */
+    .clause:last-child {
+        margin-bottom: 15px !important;
+    }
+
+}
+
+/* ================== Mobile Responsive Styles ================== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        background-size: cover;
+    }
+
+    .header_left_logo,
+    .header_right_logo {
+        padding: 0;
+        text-align: center;
+    }
+
+    .header1 {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .left_english,
+    .right_arbi {
+        width: 100%;
+        font-size: 12px;
+        margin-top: 1rem;
+    }
+
+    .main_qrcode {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .innerContent {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+
+    .leftContent,
+    .rightContent {
+        width: 100%;
+        border: none;
+    }
+
+    .condition {
+        padding: 1rem;
+    }
+
+    .clause {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .signature {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .left_eng,
+    .main_arabic,
+    .footer_logo {
+        width: 100%;
+        padding: 1rem 0;
+        border: none;
+    }
+
+    .footer_logo {
+        height: 150px;
+    }
+
+    .bottom-line {
+        margin: 1rem;
+        padding: 1rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="index.css" />
+  <!-- <link
+      rel="stylesheet"
+      href="/public/Dashboard.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+</head>
+
+<body>
+  <main>
+    <!-- main content -->
+    <div class="main-content">
+      <!-- TOP-nav -->
+      <nav class="main-nav">
+        <div class="page-name">
+          <i class="fas fa-bars"></i>
+          <p>Dashboard</p>
+        </div>
+        <div class="button">
+          <button id="addPersonBtn">Add</button>
+        </div>
+      </nav>
+
+      <!-- main content  end -->
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Room</th>
+          <th>Facility</th>
+          <th>Facility #</th>
+          <th>Request #</th>
+          <th>Request Type</th>
+          <th>Applicant</th>
+          <th>Created</th>
+          <th>Amount</th>
+          <th>Expiry</th>
+          <th>Record #</th>
+          <th>Status</th>
+          <th>Reference</th>
+          <th>Passport</th>
+          <th>QR Code</th>
+          <th>Download PDF</th>
+          <th>Delete</th>
+          </tr>
+          <tbody id="person-table-body">
+            <!-- JS will populate this -->
+          </tbody>
+        </table>
+
+        <!-- ✅ Place script here -->
+        <script>
+  fetch("/api/")
+    .then((res) => res.json())
+    .then((data) => {
+      const tbody = document.getElementById("person-table-body");
+      tbody.innerHTML = "";
+      data.forEach((record) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${record.record_id}</td>
+          <td>${record.room_name}</td>
+          <td>${record.facility_name}</td>
+          <td>${record.facility_number}</td>
+          <td>${record.request_number}</td>
+          <td>${record.request_type}</td>
+          <td>${record.applicant_name}</td>
+          <td>${record.creation_date}</td>
+          <td>${record.request_amount}</td>
+          <td>${record.expiry_date}</td>
+          <td>${record.record_number}</td>
+          <td>${record.request_status}</td>
+          <td>${record.reference_number}</td>
+          <td>${record.passport_number}</td>
+          <td>
+            ${record.qrcode_url
+              ? `<img src="${record.qrcode_url}" style="width: 50px; height: 50px; object-fit: contain;" alt="QR Code">`
+              : "No QR"}
+          </td>
+          <td>
+            <a href="/api/download-pdf?token=${record.qr_token}">
+              <button type="button">Download PDF</button>
+            </a>
+          </td>
+                `;
+
+                tbody.appendChild(tr);
+              });
+            });
+        </script>
+        </table>
+      </div>
+
+      <!-- Trigger Button OUTSIDE -->
+      <!-- Add Room Form (initially hidden in CSS or JS) -->
+      <form class="person-form" action="/" method="POST">
+  <input type="text" name="room_name" placeholder="Room Name" required />
+  <input type="text" name="facility_name" placeholder="Facility Name" required />
+  <input type="text" name="facility_number" placeholder="Facility Number" required />
+  <input type="text" name="request_number" placeholder="Request Number" required />
+  <input type="text" name="request_type" placeholder="Request Type" required />
+  <input type="text" name="applicant_name" placeholder="Applicant Name" required />
+  <input type="date" name="creation_date" required />
+  <input type="number" step="0.01" name="request_amount" placeholder="Amount" required />
+  <input type="date" name="expiry_date" required />
+  <input type="text" name="record_number" placeholder="Record Number" required />
+  <input type="text" name="request_status" placeholder="Request Status" required />
+  <input type="text" name="reference_number" placeholder="Reference Number" required />
+  <input type="text" name="passport_number" placeholder="Passport Number" required />
+  <button type="submit">Add Record</button>
+</form>
+
+          <div class="button-group">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="submit-person-btn">Add Person</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
+</html>

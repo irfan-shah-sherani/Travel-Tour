@@ -1,0 +1,185 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* Wrapper Center */
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+}
+
+/* Form Styling */
+.form {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem 3rem;
+  display: grid;
+  gap: 2rem;
+  background: radial-gradient(ellipse at top right, rgba(255, 224, 166, 0.04), transparent),
+              radial-gradient(ellipse at bottom left, rgba(255, 224, 166, 0.04), transparent);
+  border: 1px solid transparent;
+  border-image: linear-gradient(to bottom, transparent, #ffe0a6, transparent) 1;
+  border-width: 0 2px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.form::before,
+.form::after {
+  content: "";
+  position: absolute;
+  border: inherit;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.form::before {
+  inset: -1rem;
+  opacity: 0.15;
+}
+.form::after {
+  inset: -2rem;
+  opacity: 0.05;
+}
+
+/* Form Title */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.6rem;
+  background: linear-gradient(#aaa, #444);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-transform: uppercase;
+}
+
+/* Input Group */
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: radial-gradient(circle at 50% 94%, rgba(255, 255, 255, 0.05), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+
+.input-container:focus-within {
+  border-color: #ffe0a6;
+}
+
+/* Input Field */
+.input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+
+.input::placeholder {
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+/* Icon Style */
+.icon {
+  color: #888;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.input-container:focus-within .icon {
+  color: #ffe0a6;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+}
+
+.login-button .input {
+  cursor: pointer;
+  padding: 1rem;
+  background: radial-gradient(circle at center, rgba(255, 224, 166, 0.08), transparent);
+  border: 1px solid transparent;
+  border-image: linear-gradient(transparent, #ffe0a6, transparent) 1;
+  border-width: 0 1px;
+  color: #ffe0a6;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.login-button .input:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+.login-button .input:active {
+  transform: scale(0.97);
+}
+
+/* Texture Layer */
+.texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px);
+  background-size: 1px 5px;
+  mix-blend-mode: soft-light;
+  animation: movingLines 1s linear infinite;
+  -webkit-mask-image: radial-gradient(40% 45% at 100% 50%, white 0%, transparent 100%),
+                      radial-gradient(40% 45% at 0% 50%, white 0%, transparent 100%);
+  mask-image: radial-gradient(40% 45% at 100% 50%, white 0%, transparent 100%),
+              radial-gradient(40% 45% at 0% 50%, white 0%, transparent 100%);
+}
+
+/* Animations */
+@keyframes movingLines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 5px; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .input-container {
+    gap: 0.6rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .input {
+    font-size: 0.95rem;
+  }
+
+  .login-button .input {
+    font-size: 0.95rem;
+  }
+}

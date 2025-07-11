@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="index.css" />
+  <!-- <link
+      rel="stylesheet"
+      href="/public/Dashboard.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+</head>
+
+<body>
+  <main>
+    <!-- main content -->
+    <div class="main-content">
+      <!-- TOP-nav -->
+      <nav class="main-nav">
+        <div class="page-name">
+          <i class="fas fa-bars"></i>
+          <p>Dashboard</p>
+        </div>
+        <div class="button">
+          <button id="addPersonBtn">Add</button>
+        </div>
+      </nav>
+
+      <!-- main content  end -->
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Room No</th>
+          <th>Facility Name</th>
+          <th>Facility No</th>
+          <th>Request No</th>
+          <th>Request Type</th>
+          <th>Applicant</th>
+          <th>Created Date</th>
+          <th>Request Amount</th>
+          <th>expiry date</th>
+          <th>record number</th>
+          <th>request status</th>
+          <th>created_`at</th>
+          <th>reference_number</th>
+          <th>passport_number</th>
+          <th>QR Code</th>
+          <th>Download PDF</th>
+          <th>Delete</th>
+          </tr>
+          <tbody id="person-table-body">
+            <!-- JS will populate this -->
+          </tbody>
+        </table>
+
+        <!-- ✅ Place script here -->
+        <script>
+  fetch("/api/")
+    .then((res) => res.json())
+    .then((data) => {
+      const tbody = document.getElementById("person-table-body");
+      tbody.innerHTML = "";
+      data.forEach((record) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${record.record_id}</td>
+          <td>${record.room_name}</td>
+          <td>${record.facility_name}</td>
+          <td>${record.facility_number}</td>
+          <td>${record.request_number}</td>
+          <td>${record.request_type}</td>
+          <td>${record.applicant_name}</td>
+          <td>${record.creation_date}</td>
+          <td>${record.request_amount}</td>
+          <td>${record.expiry_date}</td>
+          <td>${record.record_number}</td>
+          <td>${record.request_status}</td>
+          <td>${record.reference_number}</td>
+          <td>${record.passport_number}</td>
+          <td>${record.qrcode_url ? `<img src="${record.qrcode_url}" class="qr-img" alt="QR Code">` : "No QR"}</td>
+          <td>
+            <a href="/api/download-pdf?token=${record.qr_token}">
+              <button type="button">Download PDF</button>
+            </a>
+          </td>
+          <td>
+            <form action="/delete/${record.qr_token}" method="POST" onsubmit="return confirm('Are you sure you want to delete this record?');">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        `;
+
+                tbody.appendChild(tr);
+              });
+            });
+        </script>
+        </table>
+      </div>
+
+      <!-- Trigger Button OUTSIDE -->
+      <!-- Add Room Form (initially hidden in CSS or JS) -->
+      <div class="add-new add-new-person">
+        <h2 class="form-title">Add New Person</h2>
+        <form class="person-form" action="/" method="POST">
+          <div class="inputForm">
+            <!-- Left Side -->
+            <div class="left-side">
+              <div class="form-group">
+                <label for="room_number">Room No </label>
+                <input type="text" id="room_number" name="room_number" required />
+              </div>
+
+              <div class="form-group">
+                <label for="facility_name">Facility Name </label>
+                <input type="text" id="facility_name" name="facility_name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="facility_number">Facility number </label>
+                <input type="text" id="facility_number" name="facility_number" required />
+              </div>
+
+              <div class="form-group">
+                <label for="request_number">Request number </label>
+                <input type="number" id="request_number" name="request_number" step="0.01" required />
+              </div>
+
+              <div class="form-group">
+                <label for="request_type">Request Type</label>
+                <input type="text" id="request_type" name="request_type" required />
+              </div>
+            </div>
+
+            <!-- Center Side -->
+            <div class="center-side">
+              <div class="form-group">
+                <label for="applicant">Applicant</label>
+                <input type="text" id="applicant" name="applicant" />
+              </div>
+
+              <div class="form-group">
+                <label for="created">Created</label>
+                <input type="text" id="created" name="created" />
+              </div>
+
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" id="amount" name="amount" />
+              </div>
+
+              <div class="form-group">
+                <label for="expiry">Expiry</label>
+                <input type="text" id="expiry" name="expiry" />
+              </div>
+
+              <div class="form-group">
+                <label for="record_number">Record number</label>
+                <input type="text" id="record_number" name="record_number" />
+              </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="right-side">
+              <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" id="status" name="status" />
+              </div>
+
+              <div class="form-group">
+                <label for="reference_number">Reference number</label>
+                <input type="text" id="reference_number" name="reference_number" />
+              </div>
+
+              <div class="form-group">
+                <label for="passport_number">Passport number</label>
+                <input type="text" id="passport_number" name="passport_number" />
+              </div>
+
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="submit-person-btn">Add Person</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
+</html>
